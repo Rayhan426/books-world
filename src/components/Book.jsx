@@ -19,7 +19,7 @@ const Book = () => {
     
    
     return (
-<div className="mt-12 border bg-base-100 shadow-xl">
+<div className="mt-12  bg-base-100 ">
         
         {/* flex container  */}
         <div className="flex lg:flex-row flex-col gap-10  ">
