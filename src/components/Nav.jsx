@@ -5,11 +5,11 @@ const Nav = () => {
 
     const link = <>
 
-<NavLink to={'/'} className={({isActive})=> isActive? 'border-2 border-[#23BE0A] px-5 py-3 rounded-lg text-[#23BE0A]' : 'px-5 py-3 text-[#131313CC]'}>Home </NavLink>
-<NavLink to={'/listed-book'} className={({isActive}) => isActive? 'border-2 border-[#23BE0A] px-5 py-3 rounded-lg text-[#23BE0A]' : 'px-5 py-3 text-[#131313CC]'}>Listed Books</NavLink>
-<NavLink to={'/page-to-read'} className={({isActive}) => isActive? 'border-2 border-[#23BE0A] px-5 py-3 rounded-lg text-[#23BE0A]' : 'px-5 py-3 text-[#131313CC]'}>Pages to Read</NavLink>
-<NavLink to={'/blogs'} className={({isActive}) => isActive? 'border-2 border-[#23BE0A] px-5 py-3 rounded-lg text-[#23BE0A]' : 'px-5 py-3 text-[#131313CC]'}>Blogs</NavLink>
-<NavLink to={'/about'} className={({isActive}) => isActive? 'border-2 border-[#23BE0A] px-5 py-3 rounded-lg text-[#23BE0A]' : 'px-5 py-3 text-[#131313CC]'}>About</NavLink>
+<NavLink to={'/'} className={({isActive})=> isActive? 'border-2 border-[#23BE0A] px-5 py-3 rounded-lg text-[#23BE0A]' : 'px-5 py-3 text-[#131313CC] hover:bg-[#23BE0A] hover:text-white hover:rounded-lg'}>Home </NavLink>
+<NavLink to={'/listed-book'} className={({isActive}) => isActive? 'border-2 border-[#23BE0A] px-5 py-3 rounded-lg text-[#23BE0A]' : 'px-5 py-3 hover:bg-gray-300 hover:rounded-lg text-[#131313CC]'}>Listed Books</NavLink>
+<NavLink to={'/page-to-read'} className={({isActive}) => isActive? 'border-2 border-[#23BE0A] px-5 py-3 rounded-lg text-[#23BE0A]' : 'px-5 py-3 hover:bg-gray-300 hover:rounded-lg text-[#131313CC]'}>Pages to Read</NavLink>
+<NavLink to={'/blogs'} className={({isActive}) => isActive? 'border-2 border-[#23BE0A] px-5 py-3 rounded-lg text-[#23BE0A]' : 'px-5 py-3 hover:bg-gray-300 hover:rounded-lg text-[#131313CC]'}>Blogs</NavLink>
+<NavLink to={'/about'} className={({isActive}) => isActive? 'border-2 border-[#23BE0A] px-5 py-3 rounded-lg text-[#23BE0A]' : 'px-5 py-3 hover:bg-gray-300 hover:rounded-lg text-[#131313CC]'}>About</NavLink>
     </>
      
     
@@ -37,7 +37,7 @@ const Nav = () => {
       {link}
       </ul>
     </div>
-    <Link to={'/'}  className="btn btn-ghost lg:text-[28px] p-0 font-bold text-[#131313]">Books Vibe</Link>
+    <Link to={'/'}  className="btn btn-ghost lg:text-[28px] p-0 font-bold text-[#23BE0A] ">Books Vibe</Link>
   </div>
   <div className="navbar-center hidden lg:flex ">
     <ul className="menu menu-horizontal gap-1 px-1 ">
@@ -45,8 +45,8 @@ const Nav = () => {
     </ul>
   </div>
   <div className="navbar-end gap-2">
-    <a className="cursor-pointer bg-[#23BE0A] lg:px-7 lg:py-4 px-4 py-2 text-white rounded-lg font-bold">Sign In</a>
-    <a className="cursor-pointer bg-[#23BE0A] lg:px-7 lg:py-4 px-4 py-2 text-white rounded-lg font-bold">Sign Up</a>
+    <a className="cursor-pointer hover:border-2 border-[#23BE0A] hover:text-[#131313] hover:scale-95 hover:duration-300 hover:bg-white bg-[#23BE0A] lg:px-7 lg:py-4 px-4 py-2 text-white rounded-lg font-bold">Sign In</a>
+    <a className="cursor-pointer hover:border-2 border-[#1d6dad] hover:text-[#131313] hover:scale-95 hover:duration-300 hover:bg-white bg-[#1d6dad]  lg:px-7 lg:py-4 px-4 py-2 text-white rounded-lg font-bold">Sign Up</a>
   </div>
 </div>
     );

@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import Home from './pages/Home'
@@ -8,7 +8,8 @@ import Routs from './components/routs/Routs'
 import About from './components/About'
 import ListedBooks from './components/ListedBooks'
 import PageToRead from './components/PageToRead'
-import Blogs from './components/Blogs'
+import Book from './components/Book'
+
 
 
 
@@ -16,8 +17,6 @@ import Blogs from './components/Blogs'
 
 
 const router = createBrowserRouter([
-
-
   {
     path: '/',
     element: <Routs></Routs>,
@@ -33,13 +32,15 @@ const router = createBrowserRouter([
         element: <ListedBooks></ListedBooks>
       },
       {
+        path: '/books/:bookId',
+        element: <Book></Book>,
+        loader: ()=> fetch('../books.json')
+      },
+      {
         path: '/page-to-read',
         element: <PageToRead></PageToRead>
       },
-      {
-        path: '/blogs',
-        element: <Blogs></Blogs>
-      },
+      
       {
         path: '/about',
         element: <About></About>
