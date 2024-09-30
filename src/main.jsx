@@ -1,5 +1,6 @@
 
 import { createRoot } from 'react-dom/client'
+import  { Toaster } from 'react-hot-toast';
 import './index.css'
 import Home from './pages/Home'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
@@ -9,6 +10,9 @@ import About from './components/About'
 import ListedBooks from './components/ListedBooks'
 import PageToRead from './components/PageToRead'
 import Book from './components/Book'
+import ReadBooks from './components/ReadBooks'
+import Wishlist from './components/Wishlist'
+
 
 
 
@@ -34,7 +38,16 @@ const router = createBrowserRouter([
       {
         path: '/books/:bookId',
         element: <Book></Book>,
-        loader: ()=> fetch('../books.json')
+        loader: ()=> fetch('/books.json'),
+      },
+    
+      {
+        path: '/read',
+        element: <ReadBooks></ReadBooks>,
+      },
+      {
+        path: '/wishlist-books',
+        element: <Wishlist></Wishlist>
       },
       {
         path: '/page-to-read',
@@ -52,5 +65,8 @@ const router = createBrowserRouter([
 )
 
 createRoot(document.getElementById('root')).render(
-<RouterProvider router={router}></RouterProvider>
+<>
+<RouterProvider router={router}></RouterProvider>,
+<Toaster position='top-right'></Toaster>
+</>
 )
