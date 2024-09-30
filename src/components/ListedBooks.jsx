@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { IoIosArrowDown } from "react-icons/io";
 
 
 const ListedBooks = () => {
 
-
     const [tabIndex, setTabIndex] = useState(0);
+
+    
     return (
         <div className="">
 
@@ -14,6 +16,16 @@ const ListedBooks = () => {
             </div>
 
 
+ <div className=" w-full flex justify-center">
+ <details className="dropdown mb-14">
+  <summary className="btn m-1 bg-[#23BE0A] hover:bg-green-700 text-white ">Sort By <span><IoIosArrowDown></IoIosArrowDown></span></summary>
+  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+    <li><a>Rating</a></li>
+    <li><a>Number of pages</a></li>
+    <li><a>Publisher year</a></li>
+  </ul>
+</details>
+ </div>
 
 
             {/* tabs start */}
