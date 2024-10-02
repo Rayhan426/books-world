@@ -2,7 +2,7 @@
 
 const Tabs = ({ tabIndex, setTabIndex, tabs }) => {
   return (
-    <div className="flex items-center w-full">
+    <div className="flex p-3 items-center w-full">
 
       <button
         onClick={() => setTabIndex(0)}
