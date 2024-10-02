@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 
 
 // get items from localStorage 
-const getBooks = (key) => {
+export const getBooks = (key) => {
     let books = [];
     const storedBooks = localStorage.getItem(key);
     if (storedBooks) {
@@ -29,13 +29,13 @@ export const saveReadBooks = (book) => {
         toast.info('Books added to Read list..!');
     }
 
-    // Add the book to "ead list
+    // Add the book to read list
     readBooks.push(book);
     localStorage.setItem('readBooks', JSON.stringify(readBooks));
     toast.success('Books added to Read list!');
 }
 
-// Save  book to the 'Wishlist'
+// Save  book to the Wishlist
 export const saveWishlist = (book) => {
     let readBooks = getBooks('readBooks');
     let wishlistBooks = getBooks('wishlistBooks');
@@ -48,12 +48,13 @@ export const saveWishlist = (book) => {
 
     const isExistInRead = readBooks.find(b => b.bookId === book.bookId);
     
-    // If the book is in the "Read" list, don't allow adding to Wishlist
+
     if (isExistInRead) {
         return toast.error('Already added this book to your wishlist..!');
     }
 
-    // Add the book to "Wishlist"
+    // Add the book to Wishlist
+
     wishlistBooks.push(book);
     localStorage.setItem('wishlistBooks', JSON.stringify(wishlistBooks));
     toast.success('Book added to Wishlist..!');

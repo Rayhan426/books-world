@@ -1,43 +1,57 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { IoIosArrowDown } from "react-icons/io";
 
+import { useState, useEffect } from "react";
+import Tabs from './Tabs'; 
+import { getBooks } from "../utils";
+import ReadBooks from "./ReadBooks";
+import Wishlist from "./Wishlist";
 
 const ListedBooks = () => {
+    const [tabIndex, setTabIndex] = useState(0); 
+    const [readBooks, setReadBooks] = useState([]);
+    const [wishlistBooks, setWishlistBooks] = useState([]);
 
+   
+    useEffect(() => {
+        setReadBooks(getBooks('readBooks'));
+        setWishlistBooks(getBooks('wishlistBooks'));
+    }, []);
 
-    const [tabIndex, setTabIndex] = useState(0);
-    
     return (
         <div className="">
+           
+            <Tabs
+                tabIndex={tabIndex}
+                setTabIndex={setTabIndex}
+                tabs={['Read Books', 'Wishlist Books']}
+            />
 
-            <div className="bg-[#1313130D] my-9 rounded-xl p-10">
-            <h2 className="text-[#131313] font-bold text-3xl text-center">Books</h2>
+         
+            <div className="border ">
+                {tabIndex === 0 ? (
+                    <div>
+                        {readBooks.length > 0 ? (
+                            readBooks.map((book) => (
+                              <ReadBooks key={book.bookId} readBook={book}>
+                                </ReadBooks>
+                            ))
+                        ) : (
+                            <p>No books in the Read list.</p>
+                        )}
+                    </div>
+                ) : (
+                    <div>
+                      
+                        {wishlistBooks.length > 0 ? (
+                            wishlistBooks.map((book) => (
+                                <Wishlist key={book.bookId} wishlistBook={book}>
+                                </Wishlist>
+                            ))
+                        ) : (
+                            <p>No books in the Wishlist.</p>
+                        )}
+                    </div>
+                )}
             </div>
-
-
- <div className=" w-full flex justify-center ">
- <details className="dropdown mb-14">
-  <summary className="btn m-1 bg-[#23BE0A] hover:bg-green-700 text-white ">Sort By <span><IoIosArrowDown></IoIosArrowDown></span></summary>
-  <ul className="menu dropdown-content  rounded-box z-[1] w-52 p-2 shadow">
-    <li><a>Rating</a></li>
-    <li><a>Number of pages</a></li>
-    <li><a>Publisher year</a></li>
-  </ul>
-</details>
- </div>
-
-
-  {/* tabs start */}
-   <div className="flex p-4  items-center flex-nowrap  w-full ">
-	<Link  to={'/read'} onClick={()=> setTabIndex(0)} rel="noopener noreferrer" href="#" className={`flex items-center flex-shrink-0 px-5 py-3 space-x-2  border-[#1313134D] ${tabIndex === 0 ? 'border border-b-0 ' : 'border-b'}`}>
-		<span className={`${tabIndex === 0 ? 'text-gray-900 font-semibold' : 'text-[#13131380]'}`}>Read Books</span>
-	</Link>
-	<Link to={'/wishlist-books'} onClick={()=> setTabIndex(1)}  rel="noopener noreferrer" href="#" className={`flex items-center flex-shrink-0 px-5 py-3 space-x-2  rounded-r-none  rounded-t-lg  border-[#1313134D] ${tabIndex === 1 ? 'border border-b-0 border-r-0' : 'border-b'}`}>
-		<span className={`${tabIndex === 1 ? 'text-gray-900 font-semibold' : 'text-[#13131380]'}`}>Wishlist Books</span>
-	</Link>
-</div>
-            {/* tabs end */}
         </div>
     );
 };

@@ -1,5 +1,6 @@
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import {  useLoaderData, useParams } from "react-router-dom";
 import { saveReadBooks, saveWishlist } from "../utils";
+
 
 
 const Book = () => {
@@ -18,10 +19,11 @@ const Book = () => {
         category,
         tags,
         publisher, yearOfPublishing} = book;
+
+    
     
         const handleBook = book =>{
           saveReadBooks(book)
-          
         }
 
         const handleWishlist =(book)=>{
@@ -73,8 +75,8 @@ const Book = () => {
   
   
           <div className="flex  gap-5 mt-8">
-          <Link onClick={()=> handleBook(book)} className="border-2 border-[#50B1C9] px-7 py-[18px] rounded-xl font-bold text-[#131313]">Read</Link>
-          <Link onClick={()=>handleWishlist(book)} className="bg-[#50B1C9] px-7 py-[18px] rounded-xl font-bold text-white">Wishlist</Link>
+          <button onClick={()=> handleBook(book)} className="border-2 border-[#50B1C9] px-7 py-[18px] rounded-xl font-bold text-[#131313]">Read</button>
+          <button onClick={()=>handleWishlist(book)} className="bg-[#50B1C9] px-7 py-[18px] rounded-xl font-bold text-white">Wishlist</button>
           </div>
         </div>
         </div>

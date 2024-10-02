@@ -1,11 +1,15 @@
 
 
 
-const ReadBooks = () => {
-  
+const ReadBooks = ({readBook}) => {
+   
+    const {category} = readBook;
+
     return (
         <div>
-            <h1>read books</h1>
+            <h3>Read Books</h3>
+            <h1 className="text-green-400">{category}</h1>
+
         </div>
     );
 };
