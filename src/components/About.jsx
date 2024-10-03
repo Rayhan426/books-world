@@ -9,7 +9,7 @@ const About = () => {
       </div>
 
 
-      <div className='flex justify-between items-center gap-7'>
+      <div className='flex lg:flex-row flex-col justify-between items-center gap-7'>
         <div className=''>
             <img src={placeholderImg} alt="" />
         </div>
@@ -22,7 +22,7 @@ const About = () => {
 Happy Reading! 
  <span className=" ml-1 font-bold">Books World.</span></p>
 
-<div className='flex justify-end'>
+<div className='flex lg:justify-end justify-center mt-4'>
 <Link to={'/'} className='text-white hover:bg-black hover:scale-100 duration-300 bg-violet-600 px-5 py-3 rounded-lg font-bold'>Explore Books</Link>
 </div>
         </div>
