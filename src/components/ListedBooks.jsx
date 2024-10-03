@@ -44,7 +44,7 @@ const ListedBooks = () => {
             />
 
          
-            <div className="border p-3 ">
+            <div className=" p-1 ">
                 {tabIndex === 0 ? (
                     <div>
                         {readBooks.length > 0 ? (
