@@ -5,18 +5,34 @@ import { getBooks } from "../utils";
 import ReadBooks from "./ReadBooks";
 import Wishlist from "./Wishlist";
 import { IoIosArrowDown } from "react-icons/io";
-import PageToRead from "./PageToRead";
+
 
 const ListedBooks = () => {
     const [tabIndex, setTabIndex] = useState(0); 
     const [readBooks, setReadBooks] = useState([]);
     const [wishlistBooks, setWishlistBooks] = useState([]);
+    const [sortBook, setSortBook] = useState('');
+
 
    
     useEffect(() => {
         setReadBooks(getBooks('readBooks'));
         setWishlistBooks(getBooks('wishlistBooks'));
+       
     }, []);
+
+
+
+    const sortBooks = (books) => {
+        if (sortBook === 'rating') {
+          return books.sort((a, b) => b.rating - a.rating); 
+        } else if (sortBook === 'pages') {
+          return books.sort((a, b) => b.totalPages - a.totalPages); 
+        } else if (sortBook === 'year') {
+          return books.sort((a, b) => b.yearOfPublishing - a.yearOfPublishing); e
+        }
+        return books; 
+      };
 
     return (
         <div className="">
@@ -31,9 +47,9 @@ const ListedBooks = () => {
 <details className="dropdown">
   <summary className="btn m-1 bg-[#23BE0A] hover:bg-black text-white ">Sort By <span><IoIosArrowDown></IoIosArrowDown></span></summary>
   <ul className="menu dropdown-content text-[#131313CC] bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-    <li><a>Rating</a></li>
-    <li><a>Number of pages</a></li>
-    <li><a>Publisher year</a></li>
+    <li><a onClick={() => setSortBook('rating')}>Rating</a></li>
+    <li><a onClick={() => setSortBook('pages')}>Number of pages</a></li>
+    <li><a onClick={() => setSortBook('year')}>Publisher year</a></li>
   </ul>
 </details>
 </div>
@@ -49,7 +65,7 @@ const ListedBooks = () => {
                 {tabIndex === 0 ? (
                     <>
                         {readBooks.length > 0 ? (
-                            readBooks.map((book) => (
+                            sortBooks(readBooks).map((book) => (
                               <ReadBooks  key={book.bookId} readBook={book}>
                                 </ReadBooks>
                             ))
@@ -63,7 +79,7 @@ const ListedBooks = () => {
                     <div>
                       
                         {wishlistBooks.length > 0 ? (
-                            wishlistBooks.map((book) => (
+                           sortBooks( wishlistBooks).map((book) => (
                                 <Wishlist key={book.bookId} wishlistBook={book}>
                                 </Wishlist>
                             ))
